@@ -45,18 +45,18 @@ function bookData() {
 // bookData();
 
 
-function booksHandler(req, res) {
-    let userEmail = req.query.email;
+// function booksHandler(req, res) {
+//     let userEmail = req.query.email;
 
-    userModel.find({ email:userEmail }, function (err, userData) {
-        if (err) {
-            console.log('did not work')
-        } else {
-            console.log(userData)
-            res.send(userData[0].books)
-        }
-    })
+//     userModel.find({ email:userEmail }, function (err, userData) {
+//         if (err) {
+//             console.log('did not work')
+//         } else {
+//             console.log(userData)
+//             res.send(userData[0].books)
+//         }
+//     })
 
-}
+// }
 
-module.exports = booksHandler
+module.exports = userModel

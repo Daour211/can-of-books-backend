@@ -12,7 +12,7 @@ server.use(express.json());
 server.use(cors());
 
 const PORT = process.env.PORT;
-const booksHandler = require ('./modules/user');
+const userModel = require ('./modules/user');
 
 server.listen(PORT, () => {
     console.log(`listening on PORT ${PORT}`);
@@ -29,7 +29,19 @@ function homePage(req, res) {
 
 server.get('/books', booksHandler);
 
+function booksHandler(req, res) {
+    let userEmail = req.query.email;
 
+    userModel.find({ email:userEmail }, function (err, userData) {
+        if (err) {
+            console.log('did not work')
+        } else {
+            console.log(userData)
+            res.send(userData[0].books)
+        }
+    })
+
+}
 
 
 server.post('/addbook', addingBooks);
