@@ -5,8 +5,9 @@ const cors = require('cors');
 require('dotenv').config();
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/books', { useNewUrlParser: true, useUnifiedTopology: true });
-
+mongoose.connect(`${process.env.MONGODB_URI}`, { useNewUrlParser: true, useUnifiedTopology: true });
+// mongodb://localhost:27017/books
+// mongodb+srv://Daour995:daour995@can-of-books-301-d20.aa3bb.mongodb.net/books?retryWrites=true&w=majority
 const server = express();
 server.use(express.json());
 server.use(cors());
