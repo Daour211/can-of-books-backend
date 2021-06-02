@@ -97,3 +97,29 @@ function deleteBook(req, res) {
 
 }
 
+server.put('/updateBook/:index', updateBook)
+
+function updateBook(req, res) {
+    console.log(req.body);
+
+    const { bookName, bookDescription, imgURL, bookStatus, email } = req.body;
+    let index = req.params.index
+
+
+
+
+    userModel.findOne({ email: email }, (err, updatedData) => {
+        // console.log(updatedData[0].books[index]);
+        // updatedData[0].books[index]=req.body;
+        // console.log(updatedData.books);
+
+        updatedData.books.splice(index, 1, {
+            name: bookName,
+            description: bookDescription,
+            status: bookStatus,
+            imgURL: imgURL
+        })
+        updatedData.save();
+        res.send(updatedData);
+    })
+}
