@@ -53,7 +53,7 @@ function bookData() {
     book2.save()
     book3.save()
 }
-// bookData()
+bookData()
 
 
 function usersData() {
@@ -85,7 +85,7 @@ function usersData() {
 
     abdelrahman.save();
 }
-// usersData();
+usersData();
 
 
 // function booksHandler(req, res) {
